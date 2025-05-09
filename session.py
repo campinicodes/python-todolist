@@ -25,3 +25,6 @@ def require_login():
     if not is_logged():
         flash('Usuário não logado.')
         return redirect(url_for('login'))
+
+def get_user_id():
+    return session.get('user_id')
