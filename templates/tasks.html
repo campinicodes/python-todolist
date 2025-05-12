@@ -1,1 +1,12 @@
 <h3>tarefas</h3>
+
+<ul>
+    {% for task in tasks %}
+    <li>
+        <strong>{{ task['title'] }}</strong> - {{task['due_date']}}
+        <p>{{task['description']}}</p>
+    </li>
+{% else %}
+<li>Nenhuma tarefa encontrada.</li>
+{% endfor %}
+</ul>

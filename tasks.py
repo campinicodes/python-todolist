@@ -7,7 +7,7 @@ get_db_connection()
 def get_tasks():
     conn = get_db_connection()
     user_id = session.get_user_id()
-    tasks = conn.execute('SELECT * FROM tasks where user_id = ? ORDER BY completed, due_date', (user_id)).fetchall()
+    tasks = conn.execute('SELECT * FROM tasks where user_id = ? ORDER BY completed, due_date', (user_id,)).fetchall()
     conn.close()
     return tasks
 

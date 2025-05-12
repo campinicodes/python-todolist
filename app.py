@@ -3,6 +3,7 @@ import sqlite3
 from session import login_user, logout_user, is_logged
 from datetime import timedelta
 from db import get_db_connection
+import tasks as tsk
 
 app = Flask(__name__)
 
@@ -60,7 +61,10 @@ def logout():
 def tasks():
     if not is_logged():
         return redirect('/login')
-    return render_template('tasks.html')
+    user_tasks = tsk.get_tasks()
+    return render_template('tasks.html', tasks=user_tasks)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
